@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class ItemBase(BaseModel):
     name: str
@@ -6,7 +7,4 @@ class ItemBase(BaseModel):
 
 class Item(ItemBase):
     id: int
-
-    class Config:
-        orm_mode = True
-
+    model_config = ConfigDict(from_attributes=True)
